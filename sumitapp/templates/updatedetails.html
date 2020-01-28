@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.countrydetails {
+  border: 1px solid black;
+}
+.countrydetails input{
+  margin-top:16px;
+  margin-bottom:16px;
+}
+.AddDetails
+{
+text-align = center;
+}
+form {
+
+  display: table;
+  border: 1px solid black;
+  margin: 0 auto;
+  width:50%
+
+}
+div {
+
+  display: table-row;
+}
+input {
+  width: auto;
+  height:20%;
+  display: table-cell;
+}
+.submit {
+    margin-top:16px;
+}
+label {
+ display: table-cell;
+
+}
+</style>
+</head>
+
+<body>
+  <form action="{% url 'updatedetailsuccess' %}" method="post">
+    {% csrf_token %}
+    <div class="countrydetails" border: 1px solid black>
+      <div>
+        <label for="universityid">University ID: </label>
+        <input type="text"  data-type="text" name="universityid" value="" aria-required="true" placeholder="University Id" aria-label="id" id="universityid" required>
+      </div>
+      <div>
+      <!-- <label for="university_name">University Name: </label>
+      <input id="university_name" type="text" name="university_name" placeholder="University Name" required>
+      </div>
+      <div class="address">
+      <label for="city_id">City ID: </label>
+      <input id="city_id" type="text" name="city_id" placeholder="City Id" required>
+      </div>
+      <div class="address">
+      <label for="country_id">Country ID: </label>
+      <input id="country_id" type="text" name="country_id" placeholder="Country Id" required>
+      </div>
+      <div class="address">
+      <label for="city_name">City Name: </label>
+      <input id="city_name" type="text" name="city_name" placeholder="City Name" required>
+      </div>
+      <div class="address">
+      <label for="course_count">Course Count: </label>
+      <input id="course_count" type="text" name="course_count" placeholder="Course Count" required>
+      </div>
+      <div class="address">
+      <label for="country_name">Country Name: </label>
+      <input id="country_name" type="text" name="country_name" placeholder="Country Name" required>
+      </div>
+    </div> -->
+    <div class="AddDetails"/>
+    <input class="submit" type="submit" value="Update Detail">
+  </form>
+</body>

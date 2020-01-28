@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+input {
+  width: 7%;
+}
+</style>
+</head>
+<body>
+  <h1>Student Details</h1>
+  <h3>Add, Delete or Update, Click below:</h3>
+  <form name = "detailsamendments" action="{% url 'home' %}" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Add" width="100" height="100" onclick="javascript: form.action='{% url 'adddetails' %}';" />
+    <input type="submit" value="Update" width="100" height="100" onclick="javascript: form.action='{% url 'updatedetails' %}';"/>
+    <input type="submit" value="Delete" width="100" height="100" onclick="javascript: form.action='{% url 'deletedetails' %}';"/>
+  </form>
+<div>
+    <table style="width:100%">
+      <tr>
+      <th>University ID</th>
+      <th>University Name</th>
+      <th>City ID</th>
+      <th>Country ID</th>
+      <th>City Name</th>
+      <th>Course Count</th>
+      <th>Country Name</th>
+      </tr>
+      {% for university in universitydata %}
+        {% if not university.country_id == 0 %}
+          <tr>
+          <td>{{university.university_id}}</td>
+          <td>{{university.university_name}}</td>
+          <td>{{university.city_id}}</td>
+          <td>{{university.country_id}}</td>
+          <td>{{university.city_name}}</td>
+          <td>{{university.course_count}}</td>
+            {% for country in university.countries_set.all %}
+                <td>{{ country.country_name }}</td>
+                {% if country.country_unique_Id == None %}
+                  <td>NA</td>
+                {% endif %}
+            {% endfor %}
+          </tr>
+        {% endif %}
+      {% endfor %}
+
+    </table>
+</div>
+</body>

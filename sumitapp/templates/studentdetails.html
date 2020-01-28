@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+    {% block content %}
+    <div>
+      <h1>Add a new student</h1>
+      <form action="{% url 'successmessage' %}" method="post">
+        {% csrf_token %}
+        <label for="studentname">Student Name:</label>
+        <input id="studentname" type="text" name="studentname">
+        <label for="studentid">Student ID:</label>
+        <input id="studentid" type="text" name="studenid" required>
+        <input type="submit" value="Add Student">
+      </form>
+    </div>
+  {% endblock %}
+</body>
